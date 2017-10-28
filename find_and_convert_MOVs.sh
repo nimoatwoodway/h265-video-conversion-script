@@ -13,4 +13,4 @@ ffmpegSettings="-stats -probesize 50M -analyzeduration 100M -y -ignore_unknown -
 findString="*.MOV"
 
 #execute find and do the converting
-find $filePath -type f -name $findString -exec sh -c 'x="{}"; /usr/local/bin/ffmpeg -i {} '$ffmpegSettings' -f mov "${x%.MOV}.h265.mov" && touch -r {} "${x%.MOV}.h265.mov" && rm {}' \;
+find $filePath -type f -name $findString -exec sh -c 'x="{}"; /usr/local/bin/ffmpeg -i "{}" '$ffmpegSettings' -f mov "${x%.MOV}.h265.mov" && touch -r "{}" "${x%.MOV}.h265.mov" && rm "{}"' \;
